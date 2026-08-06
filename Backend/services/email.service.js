@@ -1,81 +1,64 @@
-const axios = require("axios");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendOTPEmail = async (email, otp) => {
-
     try {
 
-        const response = await axios.post(
+        const { data, error } = await resend.emails.send({
 
-            "https://api.brevo.com/v3/smtp/email",
+            from: "Artswith_y2 <onboarding@resend.dev>",
 
-            {
-                sender: {
-                    name: "Artswith_y2",
-                    email: "yashishkumarkamboj@gmail.com",
-                },
+            to: email,
 
-                to: [
-                    {
-                        email,
-                    },
-                ],
+            subject: "Verify your Artswith_y2 Account",
 
-                subject: "Verify your Artswith_y2 Account",
+            html: `
+                <div style="font-family:Arial;padding:30px">
+                    <h2>Welcome to Artswith_y2 🎨</h2>
 
-                htmlContent: `
-                    <div style="font-family:Arial;padding:30px">
+                    <p>Use the following OTP to verify your account:</p>
 
-                        <h2>Welcome to Artswith_y2 🎨</h2>
+                    <h1
+                        style="
+                            color:#6C63FF;
+                            letter-spacing:8px;
+                        "
+                    >
+                        ${otp}
+                    </h1>
 
-                        <p>
-                            Use the following OTP to verify your account:
-                        </p>
+                    <p>
+                        This OTP expires in
+                        <strong>5 minutes</strong>.
+                    </p>
 
-                        <h1
-                            style="
-                                letter-spacing:8px;
-                                color:#6C63FF;
-                            "
-                        >
-                            ${otp}
-                        </h1>
+                    <hr>
 
-                        <p>
-                            This OTP expires in
-                            <strong>5 minutes</strong>.
-                        </p>
+                    <small>
+                        If you didn't request this,
+                        please ignore this email.
+                    </small>
 
-                    </div>
-                `,
-            },
+                </div>
+            `,
+        });
 
-            {
-                headers: {
+        if (error) {
+            console.error("Resend Error:", error);
+            throw new Error(error.message);
+        }
 
-                    "api-key": process.env.BREVO_API_KEY,
+        console.log("✅ Email Sent");
+        console.log(data);
 
-                    "Content-Type": "application/json",
+    } catch (err) {
 
-                },
-            }
+        console.error("❌ Resend API Error:", err);
 
-        );
-
-        console.log("✅ Email sent:", response.status);
+        throw err;
 
     }
-
-    catch (error) {
-
-        console.error(
-            "❌ Brevo API Error:",
-            error.response?.data || error.message
-        );
-
-        throw error;
-
-    }
-
 };
 
 module.exports = {
