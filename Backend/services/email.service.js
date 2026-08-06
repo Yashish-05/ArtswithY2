@@ -26,46 +26,46 @@ transporter.verify((error, success) => {
 
 const sendOTPEmail = async (email, otp) => {
 
-    await transporter.sendMail({
+    console.log("STEP 1");
 
-        from: '"Artswith_y2" <yashishkumarkamboj@gmail.com>',
+    console.log("Sending OTP to:", email);
 
-        to: email,
+    console.log("SMTP USER:", process.env.EMAIL_USER);
 
-        subject: "Verify your Artswith_y2 Account",
+    try {
 
-        html: `
-            <div style="font-family:Arial;padding:30px">
+        console.log("STEP 2");
 
-                <h2>Welcome to Artswith_y2 🎨</h2>
+        const info = await transporter.sendMail({
 
-                <p>Use the following OTP to verify your account:</p>
+            from: '"Artswith_y2" <yashishkumarkamboj@gmail.com>',
 
-                <h1
-                    style="
-                        letter-spacing:8px;
-                        color:#6C63FF;
-                    "
-                >
-                    ${otp}
-                </h1>
+            to: email,
 
-                <p>
-                    This OTP will expire in
-                    <strong>5 minutes</strong>.
-                </p>
+            subject: "Verify your Artswith_y2 Account",
 
-                <hr>
+            html: `
+                <h2>Your OTP</h2>
+                <h1>${otp}</h1>
+            `,
 
-                <small>
-                    If you didn't request this,
-                    please ignore this email.
-                </small>
+        });
 
-            </div>
-        `,
+        console.log("STEP 3");
 
-    });
+        console.log(info);
+
+    }
+
+    catch (err) {
+
+        console.error("SEND MAIL ERROR");
+
+        console.error(err);
+
+        throw err;
+
+    }
 
 };
 
