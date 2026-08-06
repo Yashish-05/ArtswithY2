@@ -1,77 +1,78 @@
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-
-    host: "smtp-relay.brevo.com",
-
-    port: 465,
-
-    secure: true,
-
-    auth: {
-
-        user: process.env.EMAIL_USER,
-
-        pass: process.env.EMAIL_PASS,
-
-    },
-
-});
-
-transporter.verify((error, success) => {
-
-    if (error) {
-
-        console.error("SMTP ERROR:", error);
-
-    } else {
-
-        console.log("✅ Brevo SMTP Ready");
-
-    }
-
-});
+const axios = require("axios");
 
 const sendOTPEmail = async (email, otp) => {
 
-    console.log("STEP 1");
-
-    console.log("Sending OTP to:", email);
-
-    console.log("SMTP USER:", process.env.EMAIL_USER);
-
     try {
 
-        console.log("STEP 2");
+        const response = await axios.post(
 
-        const info = await transporter.sendMail({
+            "https://api.brevo.com/v3/smtp/email",
 
-            from: '"Artswith_y2" <yashishkumarkamboj@gmail.com>',
+            {
+                sender: {
+                    name: "Artswith_y2",
+                    email: "yashishkumarkamboj@gmail.com",
+                },
 
-            to: email,
+                to: [
+                    {
+                        email,
+                    },
+                ],
 
-            subject: "Verify your Artswith_y2 Account",
+                subject: "Verify your Artswith_y2 Account",
 
-            html: `
-                <h2>Your OTP</h2>
-                <h1>${otp}</h1>
-            `,
+                htmlContent: `
+                    <div style="font-family:Arial;padding:30px">
 
-        });
+                        <h2>Welcome to Artswith_y2 🎨</h2>
 
-        console.log("STEP 3");
+                        <p>
+                            Use the following OTP to verify your account:
+                        </p>
 
-        console.log(info);
+                        <h1
+                            style="
+                                letter-spacing:8px;
+                                color:#6C63FF;
+                            "
+                        >
+                            ${otp}
+                        </h1>
+
+                        <p>
+                            This OTP expires in
+                            <strong>5 minutes</strong>.
+                        </p>
+
+                    </div>
+                `,
+            },
+
+            {
+                headers: {
+
+                    "api-key": process.env.BREVO_API_KEY,
+
+                    "Content-Type": "application/json",
+
+                },
+            }
+
+        );
+
+        console.log("✅ Email sent:", response.status);
 
     }
 
-    catch (err) {
+    catch (error) {
 
-        console.error("SEND MAIL ERROR");
+        console.error(
+            "❌ Brevo API Error:",
+            error.response?.data || error.message
+        );
 
-        console.error(err);
-
-        throw err;
+        throw error;
 
     }
 
