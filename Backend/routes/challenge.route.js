@@ -14,7 +14,7 @@ const {
 } = require("../controllers/challenge.controller");
 const { protect } = require("../middleware/auth.middleware");
 const { authorize } = require("../middleware/role.middleware");
-router.get("/active", protect, getActiveChallenge);
+router.get("/active", getActiveChallenge);
 router.get("/",getAllChallenges);
 router.get("/hall-of-fame", getHallOfFame);
 router.get("/dashboard-stats",protect,authorize("admin"),getDashboardStats);

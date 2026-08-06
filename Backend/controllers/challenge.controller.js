@@ -57,14 +57,20 @@ const getActiveChallenge = async (req, res) => {
             });
         }
 
-        const hasJoined = challenge.participants.some(
-            participant =>
-                participant.toString() === req.user.id
-        );
-        const submission = await Submission.findOne({
-            challenge: challenge._id,
-            artist: req.user.id,
-        });
+        let hasJoined = false;
+let submission = null;
+
+if (req.user) {
+    hasJoined = challenge.participants.some(
+        participant =>
+            participant.toString() === req.user.id
+    );
+
+    submission = await Submission.findOne({
+        challenge: challenge._id,
+        artist: req.user.id,
+    });
+}
         res.status(200).json({
 
             success: true,
