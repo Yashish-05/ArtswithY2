@@ -1,0 +1,35 @@
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+}
+
+.logo-icon{
+font-size:28px;
+color:var(--accent);
+transition:var(--transition);
+}
+
+.logo:hover .logo-icon{
+transform:rotate(-15deg) scale(1.1);
+}
+
+.logo-text{
+font-size:30px;
+font-weight:700;
+color:white;
+}
+
+.logo-gradient{
+background:linear-gradient(
+90deg,
+#7C3AED,
+#A855F7,
+#3B82F6
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-left:3px;
+}

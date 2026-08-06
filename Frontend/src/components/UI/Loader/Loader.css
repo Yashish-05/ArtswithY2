@@ -1,0 +1,23 @@
+.loader-container{
+
+    min-height:250px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.loader-container p{
+
+    color:#666;
+
+    font-size:15px;
+
+}

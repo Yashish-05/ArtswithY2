@@ -1,0 +1,114 @@
+.journey{
+position:relative;
+}
+
+.journey-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:35px;
+}
+.journey-item{
+position:relative;
+display:flex;
+align-items:center;
+}
+.journey-card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+border:1px solid var(--border);
+padding:35px;
+border-radius:22px;
+text-align:center;
+position:relative;
+overflow:hidden;
+transition:var(--transition);
+}
+
+.journey-card::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:100%;
+height:4px;
+background:linear-gradient(90deg,var(--primary),var(--accent));
+transform:scaleX(0);
+transition:.4s;
+}
+.journey-card:hover::before{
+transform:scaleX(1);
+}
+
+.journey-card:hover{
+transform:translateY(-10px);
+border-color:var(--primary);
+box-shadow:0 20px 40px rgba(124,58,237,.25);
+}
+
+.journey-icon{
+width:80px;
+height:80px;
+margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+border-radius:50%;
+background:linear-gradient(135deg,var(--primary),var(--primary-light));
+transition:all .35s ease;
+box-shadow:0 12px 28px rgba(124,58,237,.25);
+margin-bottom:25px;
+}
+
+.journey-card:hover .journey-icon{
+transform:scale(1.1) rotate(10deg);
+}
+
+.journey-card h3{
+margin-bottom:15px;
+}
+
+@media(max-width:992px){
+.journey-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+@media(max-width:768px){
+    .journey-item{
+
+flex-direction:column;
+
+}
+
+.journey-line{
+
+width:3px;
+
+height:40px;
+
+margin:18px 0;
+
+}
+.journey-grid{
+grid-template-columns:1fr;
+}
+}
+.journey-line{
+
+flex:1;
+
+height:3px;
+
+margin:0 18px;
+
+background:linear-gradient(
+90deg,
+var(--primary),
+var(--accent)
+);
+
+opacity:.35;
+
+border-radius:10px;
+
+}

@@ -1,0 +1,95 @@
+/* .submission-page {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.submission-page h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.submission-page p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 35px;
+}
+
+.submission-card {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.25s;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.submission-card:hover {
+    transform: translateY(-5px);
+}
+
+.submission-card.selected {
+    border-color: #6c63ff;
+    box-shadow: 0 10px 25px rgba(108,99,255,.3);
+}
+.submission-card.selected::after {
+
+    content: "✓ Selected";
+
+    display: block;
+
+    text-align: center;
+
+    padding: 12px;
+
+    background: #6c63ff;
+
+    color: white;
+
+    font-weight: 600;
+
+}
+
+.submission-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.submission-card h3 {
+    padding: 16px 16px 8px;
+}
+
+.submission-card p {
+    padding: 0 16px 18px;
+    text-align: left;
+    color: #777;
+} */
+ .submission-page {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.submission-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.submission-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.submission-header p {
+    color: #666;
+    font-size: 1rem;
+}

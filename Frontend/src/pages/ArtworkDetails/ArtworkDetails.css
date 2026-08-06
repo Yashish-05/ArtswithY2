@@ -1,0 +1,144 @@
+.artwork-details-page{
+
+    max-width:1400px;
+
+    margin:50px auto;
+
+    padding:0 32px;
+
+}
+
+.artwork-hero{
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    gap:40px;
+
+    align-items:start;
+
+    margin-bottom:60px;
+
+}
+
+@media(max-width:992px){
+
+.artwork-hero{
+
+grid-template-columns:1fr;
+
+}
+
+.artwork-details-page{
+
+padding:20px;
+
+}
+
+}
+.artwork-page-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.artwork-page-header h1{
+
+    font-size:3rem;
+
+    margin-bottom:18px;
+
+    font-weight:700;
+
+}
+
+.artwork-page-header p{
+
+    max-width:700px;
+
+    margin:0 auto;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+
+}
+.timeline-wrapper{
+
+    margin-top:20px;
+
+}
+
+.artwork-actions{
+
+    margin-top:40px;
+
+}
+
+@media(max-width:992px){
+
+.artwork-page-header h1{
+
+font-size:2.3rem;
+
+}
+
+.artwork-page-header{
+
+margin-bottom:40px;
+
+}
+
+}
+.artwork-owner-actions{
+
+display:flex;
+
+justify-content:center;
+
+margin-top:35px;
+
+}
+
+.delete-artwork-btn{
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:14px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:700;
+
+background:linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
+
+color:white;
+
+transition:.3s;
+
+box-shadow:
+0 12px 30px rgba(239,68,68,.25);
+
+}
+
+.delete-artwork-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 18px 40px rgba(239,68,68,.4);
+
+}

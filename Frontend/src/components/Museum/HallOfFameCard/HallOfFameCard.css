@@ -1,0 +1,68 @@
+.hall-card{
+    background:rgba(255,255,255,.05);
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    overflow:hidden;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    transition:.35s;
+    cursor:pointer;
+   position:relative;
+
+}
+.hall-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+.hall-badge{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:linear-gradient(135deg,#FFD700,#FFB700);
+    color:#222;
+    padding:8px 14px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:.9rem;
+    z-index:2;
+}
+.hall-image{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+.hall-content{
+    padding:18px;
+}
+.hall-content h2{
+   font-size:1.5rem;
+
+margin-bottom:10px;
+}
+.hall-challenge{
+    color:#666;
+    margin-bottom:10px;
+}
+.hall-votes{
+    font-weight:700;
+    color:#e63946;
+}
+.hall-view{
+
+margin-top:14px;
+
+font-size:.9rem;
+
+opacity:.7;
+
+transition:.3s;
+
+}
+
+.hall-card:hover .hall-view{
+
+opacity:1;
+
+color:var(--primary);
+
+}

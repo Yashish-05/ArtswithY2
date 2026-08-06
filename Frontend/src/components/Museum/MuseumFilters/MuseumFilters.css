@@ -1,0 +1,16 @@
+.museum-filters{
+display:flex;
+gap:20px;
+margin-bottom:40px;
+flex-wrap:wrap;
+}
+
+.museum-filters input,
+.museum-filters select{
+padding:14px 18px;
+border-radius:14px;
+border:none;
+background:#1f2937;
+color:white;
+min-width:220px;
+}

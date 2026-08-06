@@ -1,0 +1,427 @@
+.journey-timeline {
+
+    position: relative;
+
+    max-width: 1300px;
+
+    margin: 90px auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 90px;
+
+}
+
+.journey-path {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+
+    width: 220px;
+
+    height: 100%;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+.journey-path path {
+
+    fill: none;
+
+    stroke: url(#gradient);
+
+    stroke-width: 18;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    filter: drop-shadow(0 0 15px rgba(124, 58, 237, .55));
+
+    /* Animation */
+
+    stroke-dasharray: 2200;
+
+    stroke-dashoffset: 2200;
+
+    animation:
+
+        drawPath 3.2s ease forwards;
+
+}
+
+/* ======================= */
+
+.journey-step {
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+}
+
+/* Left */
+
+.journey-step.left {
+
+    justify-content: flex-start;
+
+}
+
+/* Right */
+
+.journey-step.right {
+
+    justify-content: flex-end;
+
+}
+
+/* ======================= */
+
+.journey-card {
+
+    width: 420px;
+
+    padding: 34px;
+
+    background: rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 28px;
+
+    position: relative;
+
+    transition: .35s;
+    opacity: 0;
+
+    animation: fadeCard .8s ease forwards;
+    overflow: hidden;
+}
+.journey-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-100%;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.08),
+
+transparent
+
+);
+
+transition:.8s;
+
+}
+.journey-card:hover::before{
+
+left:120%;
+
+}
+.journey-card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: var(--primary);
+
+    box-shadow: 0 20px 45px rgba(124, 58, 237, .28);
+
+}
+
+/* ======================= */
+
+.journey-card span {
+
+    display: inline-flex;
+
+    width: 48px;
+
+    height: 48px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(124, 58, 237, .15);
+
+    color: white;
+
+    font-weight: 700;
+
+    margin-bottom: 22px;
+
+}
+
+/* ======================= */
+
+.journey-card h3 {
+
+    margin-bottom: 18px;
+
+}
+
+.journey-card p {
+
+    line-height: 1.8;
+
+}
+
+/* ======================= */
+
+.journey-dot {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 34px;
+    animation: floatNode 4s ease-in-out infinite, pulseGlow 2.8s ease infinite;
+
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+
+    box-shadow: 0 0 35px rgba(124, 58, 237, .35);
+    z-index: 10;
+    transition:.45s;
+
+}
+.journey-card:hover + .journey-dot{
+
+transform:
+
+translateX(-50%)
+
+rotate(15deg)
+
+scale(1.08);
+
+}
+
+.journey-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+}
+
+.orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    opacity: .16;
+
+    animation:
+
+        floatOrb 10s ease-in-out infinite;
+
+}
+
+.orb-1 {
+
+    width: 260px;
+
+    height: 260px;
+
+    background: #7C3AED;
+
+    top: 6%;
+
+    left: 8%;
+
+}
+
+.orb-2 {
+
+    width: 220px;
+
+    height: 220px;
+
+    background: #A855F7;
+
+    right: 6%;
+
+    top: 45%;
+
+    animation-delay: 2s;
+
+}
+
+.orb-3 {
+
+    width: 300px;
+
+    height: 300px;
+
+    background: #3B82F6;
+
+    left: 22%;
+
+    bottom: 0;
+
+    animation-delay: 4s;
+
+}
+
+@keyframes floatOrb {
+
+    0% {
+
+        transform:
+            translateY(0px);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-40px);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+@keyframes drawPath {
+
+    to {
+
+        stroke-dashoffset: 0;
+
+    }
+
+}
+
+@keyframes floatNode {
+
+    0% {
+
+        transform:
+            translateX(-50%) translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(-50%) translateY(-8px);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%) translateY(0);
+
+    }
+
+}
+
+@keyframes pulseGlow {
+
+    0% {
+
+        box-shadow:
+
+            0 0 20px rgba(124, 58, 237, .30);
+
+    }
+
+    50% {
+
+        box-shadow:
+
+            0 0 50px rgba(124, 58, 237, .65);
+
+    }
+
+    100% {
+
+        box-shadow:
+
+            0 0 20px rgba(124, 58, 237, .30);
+
+    }
+
+}
+
+@keyframes fadeCard {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+
+            translateY(40px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}

@@ -1,0 +1,29 @@
+.login-page{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+background:#111;
+}
+.login-form{
+display:flex;
+flex-direction:column;
+gap:15px;
+padding:40px;
+background:#1c1c1c;
+border-radius:12px;
+width:350px;
+}
+.login-form h2{
+color:white;
+text-align:center;
+}
+.login-form input{
+padding:12px;
+border-radius:8px;
+border:none;
+}
+.login-form button{
+padding:12px;
+cursor:pointer;
+}

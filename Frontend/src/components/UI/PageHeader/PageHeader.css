@@ -1,0 +1,43 @@
+ .page-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.page-header-content{
+
+    max-width:760px;
+
+    margin:auto;
+
+}
+
+.page-header h1{
+
+    font-size:clamp(2.5rem,5vw,3.5rem);
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+    line-height:1.2;
+
+}
+
+.page-header-icon{
+
+    margin-right:12px;
+
+}
+
+.page-header p{
+
+    color:var(--text-secondary);
+
+    font-size:1.05rem;
+
+    line-height:1.8;
+
+}

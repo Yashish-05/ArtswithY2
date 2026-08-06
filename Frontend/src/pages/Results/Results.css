@@ -1,0 +1,18 @@
+.results-page{
+max-width:1200px;
+margin:auto;
+padding:50px 20px;
+}
+
+.results-page h1{
+text-align:center;
+margin-bottom:50px;
+}
+
+.results-page section{
+margin-bottom:60px;
+}
+
+.results-page h2{
+margin-bottom:20px;
+}

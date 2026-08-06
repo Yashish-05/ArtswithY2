@@ -1,0 +1,15 @@
+.hall-grid{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:60px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}

@@ -1,0 +1,206 @@
+.navbar{
+position:sticky;
+top:20px;
+z-index:1000;
+padding:0 25px;
+}
+
+.navbar-container{
+max-width:1300px;
+margin:auto;
+padding:16px 35px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:rgba(15,23,42,.72);
+backdrop-filter:blur(18px);
+border:1px solid var(--border);
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.navbar-links{
+display:flex;
+gap:35px;
+}
+
+.nav-link{
+position:relative;
+font-weight:500;
+color:var(--text-secondary);
+transition:var(--transition);
+}
+
+.nav-link:hover{
+color:white;
+}
+
+.nav-link::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:2px;
+background:var(--primary);
+transition:.3s;
+}
+
+.nav-link:hover::after{
+width:100%;
+}
+
+.active-link{
+color:white;
+}
+
+.active-link::after{
+width:100%;
+}
+
+.navbar-actions{
+display:flex;
+gap:15px;
+}
+
+.mobile-menu{
+display:none;
+font-size:34px;
+cursor:pointer;
+}
+
+@media(max-width:992px){
+.navbar-links{
+position:absolute;
+top:90px;
+left:0;
+right:0;
+background:var(--surface);
+padding:30px;
+display:none;
+flex-direction:column;
+align-items:center;
+gap:20px;
+border-radius:20px;
+}
+
+.navbar-links.active{
+display:flex;
+}
+
+.navbar-actions{
+display:none;
+}
+
+.mobile-menu{
+display:block;
+}
+}
+.profile-menu{
+
+position:relative;
+
+}
+
+.profile-trigger{
+
+padding:14px 20px;
+
+border:none;
+
+cursor:pointer;
+
+border-radius:50px;
+
+background:#1f2937;
+
+color:white;
+
+font-weight:600;
+
+}
+
+.profile-dropdown{
+
+position:absolute;
+
+right:0;
+
+top:60px;
+
+min-width:200px;
+
+display:flex;
+
+flex-direction:column;
+
+background:#111827;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:14px;
+
+overflow:hidden;
+
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+z-index:999;
+
+}
+
+.profile-dropdown a,
+
+.profile-dropdown button{
+
+padding:15px 18px;
+
+background:none;
+
+border:none;
+
+color:white;
+
+text-align:left;
+
+cursor:pointer;
+
+text-decoration:none;
+
+transition:.25s;
+
+}
+
+.profile-dropdown a:hover,
+
+.profile-dropdown button:hover{
+
+background:rgba(124,58,237,.2);
+
+}
+.profile-header{
+
+    padding:12px 16px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.profile-header strong{
+
+    display:block;
+
+    font-size:15px;
+
+}
+
+.profile-header p{
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    color:#777;
+
+    text-transform:capitalize;
+
+}

@@ -1,0 +1,41 @@
+.stat-card{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    padding:24px 36px;
+
+    text-align:center;
+
+    min-width:180px;
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.stat-card h2{
+
+    color:var(--primary);
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.stat-card span{
+
+    color:var(--text-secondary);
+
+}

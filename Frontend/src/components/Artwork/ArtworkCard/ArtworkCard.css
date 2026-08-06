@@ -1,0 +1,95 @@
+.artwork-card{
+display:flex;
+flex-direction:column;
+position:relative;
+overflow:hidden;
+}
+.artwork-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+transition:transform .4s ease;
+}
+/* .artwork-card:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+} */
+.artwork-card:hover img{
+transform:scale(1.08);
+}
+.artwork-content{
+padding:24px;
+display:flex;
+
+flex-direction:column;
+gap:18px;
+transform:scale(1.05);
+}
+.artwork-content h3{
+font-size:22px;
+color:var(--text-primary);
+}
+.artwork-content p{
+font-size:15px;
+color:var(--text-secondary);
+margin:0;
+}
+.artwork-content button{
+
+margin-top:auto;
+
+}
+.artwork-meta{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin:14px 0 22px;
+
+}
+
+.vote-badge,
+.winner-badge,
+.museum-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+padding:6px 12px;
+
+border-radius:999px;
+
+font-size:.85rem;
+
+font-weight:600;
+
+}
+
+.vote-badge{
+
+background:rgba(255,255,255,.08);
+
+color:var(--text-secondary);
+
+}
+
+.winner-badge{
+
+background:rgba(255,193,7,.18);
+
+color:#FFD54F;
+
+}
+
+.museum-badge{
+
+background:rgba(59,130,246,.18);
+
+color:#60A5FA;
+
+}
