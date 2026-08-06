@@ -122,55 +122,102 @@ const registerUser = async (req, res) => {
 
         // Remove previous pending registration
 
+        // await PendingUser.deleteMany({ email });
+
+        // await OTP.deleteMany({ email });
+
+        // // Hash password
+
+        // const salt = await bcrypt.genSalt(10);
+
+        // const hashedPassword =
+        //     await bcrypt.hash(password, salt);
+
+        // // Save pending user
+
+        // await PendingUser.create({
+
+        //     fullName,
+
+        //     username,
+
+        //     email,
+
+        //     password: hashedPassword,
+
+        //     expiresAt: new Date(
+        //         Date.now() + 5 * 60 * 1000
+        //     ),
+
+        // });
+
+        // // Generate OTP
+
+        // const otp = generateOTP();
+
+        // const hashedOTP =
+        //     await bcrypt.hash(otp, 10);
+
+        // await OTP.create({
+
+        //     email,
+
+        //     otp: hashedOTP,
+
+        //     expiresAt: new Date(
+        //         Date.now() + 5 * 60 * 1000
+        //     ),
+
+        // });
+
+        // await sendOTPEmail(email, otp);
+        console.log("STEP 1");
+
         await PendingUser.deleteMany({ email });
+
+        console.log("STEP 2");
 
         await OTP.deleteMany({ email });
 
-        // Hash password
+        console.log("STEP 3");
 
         const salt = await bcrypt.genSalt(10);
 
-        const hashedPassword =
-            await bcrypt.hash(password, salt);
+        console.log("STEP 4");
 
-        // Save pending user
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        console.log("STEP 5");
 
         await PendingUser.create({
-
             fullName,
-
             username,
-
             email,
-
             password: hashedPassword,
-
-            expiresAt: new Date(
-                Date.now() + 5 * 60 * 1000
-            ),
-
+            expiresAt: new Date(Date.now() + 5 * 60 * 1000),
         });
 
-        // Generate OTP
+        console.log("STEP 6");
 
         const otp = generateOTP();
 
-        const hashedOTP =
-            await bcrypt.hash(otp, 10);
+        console.log("STEP 7");
+
+        const hashedOTP = await bcrypt.hash(otp, 10);
+
+        console.log("STEP 8");
 
         await OTP.create({
-
             email,
-
             otp: hashedOTP,
-
-            expiresAt: new Date(
-                Date.now() + 5 * 60 * 1000
-            ),
-
+            expiresAt: new Date(Date.now() + 5 * 60 * 1000),
         });
 
+        console.log("STEP 9");
+
         await sendOTPEmail(email, otp);
+
+        console.log("STEP 10");
 
         res.status(200).json({
 
@@ -201,14 +248,14 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-                                        // Check Empty Fields
+        // Check Empty Fields
         if (!email || !password) {
             return res.status(400).json({
                 success: false,
                 message: "Please fill all fields"
             });
         }
-                                              // Find User
+        // Find User
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({
@@ -216,7 +263,7 @@ const loginUser = async (req, res) => {
                 message: "Invalid email or password"
             });
         }
-                                                // Compare Password
+        // Compare Password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({
@@ -224,7 +271,7 @@ const loginUser = async (req, res) => {
                 message: "Invalid email or password"
             });
         }
-                                            // Login Success
+        // Login Success
         res.status(200).json({
             success: true,
             message: "Login Successful",
