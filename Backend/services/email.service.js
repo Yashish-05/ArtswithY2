@@ -1,13 +1,32 @@
-const { Resend } = require("resend");
+const nodemailer = require("nodemailer");
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+
+    service: "gmail",
+
+    auth: {
+
+        user: process.env.EMAIL_USER,
+
+        pass: process.env.EMAIL_PASS,
+
+    },
+
+});
 
 const sendOTPEmail = async (email, otp) => {
+
+    console.log("📧 Starting Gmail OTP...");
+
     try {
 
-        const { data, error } = await resend.emails.send({
+        console.log("EMAIL_USER:", process.env.EMAIL_USER);
 
-            from: "Artswith_y2 <onboarding@resend.dev>",
+        console.log("Sending to:", email);
+
+        const info = await transporter.sendMail({
+
+            from: `"Artswith_y2" <${process.env.EMAIL_USER}>`,
 
             to: email,
 
@@ -15,9 +34,12 @@ const sendOTPEmail = async (email, otp) => {
 
             html: `
                 <div style="font-family:Arial;padding:30px">
+
                     <h2>Welcome to Artswith_y2 🎨</h2>
 
-                    <p>Use the following OTP to verify your account:</p>
+                    <p>
+                        Use the following OTP to verify your account:
+                    </p>
 
                     <h1
                         style="
@@ -29,7 +51,7 @@ const sendOTPEmail = async (email, otp) => {
                     </h1>
 
                     <p>
-                        This OTP expires in
+                        This OTP will expire in
                         <strong>5 minutes</strong>.
                     </p>
 
@@ -42,23 +64,24 @@ const sendOTPEmail = async (email, otp) => {
 
                 </div>
             `,
+
         });
 
-        if (error) {
-            console.error("Resend Error:", error);
-            throw new Error(error.message);
-        }
-
-        console.log("✅ Email Sent");
-        console.log(data);
-
-    } catch (err) {
-
-        console.error("❌ Resend API Error:", err);
-
-        throw err;
+        console.log("✅ Gmail Email Sent");
+        console.log(info.messageId);
 
     }
+
+    catch (error) {
+
+        console.error("❌ Gmail Error");
+
+        console.error(error);
+
+        throw error;
+
+    }
+
 };
 
 module.exports = {
